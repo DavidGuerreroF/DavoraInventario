@@ -2,7 +2,7 @@ from sqlalchemy import (
     Column, BigInteger, String, Text, Numeric, TIMESTAMP, ForeignKey
 )
 from sqlalchemy.orm import relationship
-from .db.session import Base
+from .database import Base
 from sqlalchemy.sql import func
 
 class InventoryGroup(Base):
@@ -44,6 +44,3 @@ class Supplier(Base):
     address = Column(Text)
     created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
     updated_at = Column(TIMESTAMP(timezone=True), server_default=func.now(), onupdate=func.now())
-
-# (Puedes añadir mapeo de inventory_entries, inventory_entry_items, exits, adjustments si los necesitas
-#  ahora o hacerlo por separado. Para empezar con la conexión y CRUD de productos, esto es suficiente.)
